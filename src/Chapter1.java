@@ -51,23 +51,38 @@ public class Chapter1 {
 		
 		
 //		UNIT TEST R-1.3
-		System.out.print("Enter an integer i. \n");
+//		System.out.print("Enter an integer i. \n");
+//		Scanner input = new Scanner(System.in); 
+//		int i;
+//		while (!input.hasNextInt())
+//		{	
+//			System.out.print("The value was not an integer. Please try again. \n");
+//			input.next();
+//		} 
+//		i = input.nextInt();
+//		
+//		input.close();
+//		if(isOdd(i))
+//		{
+//			System.out.print("i is odd. \n");
+//		}
+//		else System.out.print("i is even. \n");
+//	
+		
+//		UNIT TEST R-1.4
+		System.out.print("Enter an integer n. \n");
 		Scanner input = new Scanner(System.in); 
-		int i;
+		int n;
 		while (!input.hasNextInt())
 		{	
 			System.out.print("The value was not an integer. Please try again. \n");
 			input.next();
 		} 
-		i = input.nextInt();
+		n = input.nextInt();
 		
 		input.close();
-		if(isOdd(i))
-		{
-			System.out.print("i is odd. \n");
-		}
-		else System.out.print("i is even. \n");
-		
+		System.out.printf("The sum of all positive integers up to and" +
+		" including %d is %d.",n,sumToInteger(n));
 	}
 	
 	///Summary
@@ -134,4 +149,27 @@ public class Chapter1 {
 		else return false;
 	}
 	
+	
+	///Summary
+	///Question R-1.4
+	///Summary
+	/**
+	 * Question R-1.4:
+	 * Write a short Java method that takes an integer m and returns 
+	 * the sum off all positive integers less than or equal to n.
+	 * 
+	 * My Solution:
+	 * This can be done with pretty much any loop or recursive function, 
+	 * but I think I'll stick with the tried and trusted for loop :).
+	 */
+	public static long sumToInteger(int n)
+	{
+		if (n<1) return 0;
+		long sum=0;
+		for(int i=1;i<=n;i++)
+		{
+			sum+=i;
+		}
+		return sum;
+	}
 }
