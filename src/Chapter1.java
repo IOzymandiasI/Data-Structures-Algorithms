@@ -68,23 +68,69 @@ public class Chapter1 {
 //		}
 //		else System.out.print("i is even. \n");
 //	
+//		
+////		UNIT TEST R-1.4
+//		System.out.print("Enter an integer n. \n");
+//		Scanner input = new Scanner(System.in); 
+//		int n;
+//		while (!input.hasNextInt())
+//		{	
+//			System.out.print("The value was not an integer. Please try again. \n");
+//			input.next();
+//		} 
+//		n = input.nextInt();
+//		
+//		input.close();
+//		System.out.printf("The sum of all positive integers up to and" +
+//		" including %d is %d.",n,sumToInteger(n));
+//	}
+//	
 		
-//		UNIT TEST R-1.4
-		System.out.print("Enter an integer n. \n");
-		Scanner input = new Scanner(System.in); 
-		int n;
-		while (!input.hasNextInt())
-		{	
-			System.out.print("The value was not an integer. Please try again. \n");
-			input.next();
-		} 
-		n = input.nextInt();
 		
-		input.close();
-		System.out.printf("The sum of all positive integers up to and" +
-		" including %d is %d.",n,sumToInteger(n));
-	}
+////		UNIT TEST R-1.5
+//		System.out.print("Enter an integer n. \n");
+//		Scanner input = new Scanner(System.in); 
+//		int n;
+//		while (!input.hasNextInt())
+//		{	
+//			System.out.print("The value was not an integer. Please try again. \n");
+//			input.next();
+//		} 
+//		n = input.nextInt();
+//		
+//		input.close();
+//		System.out.printf("The sum of all even positive integers up to and" +
+//		" including %d is %d.",n,sumOfEvens(n));
+//	}
+//	
+////	UNIT TEST R-1.6
+//	System.out.print("Enter an integer n. \n");
+//	Scanner input = new Scanner(System.in); 
+//	int n;
+//	while (!input.hasNextInt())
+//	{	
+//		System.out.print("The value was not an integer. Please try again. \n");
+//		input.next();
+//	} 
+//	n = input.nextInt();
+//	
+//	input.close();
+//	System.out.printf("The sum of all squares up to and" +
+//	" including %d is %d.",n,sumOfSquares(n));
+//}
+
+//	UNIT TEST R-1.7
+	System.out.print("Enter a string of characters. \n");
+	Scanner input = new Scanner(System.in); 
+	String s;
+	s = input.nextLine();
 	
+	input.close();
+	System.out.printf("The number of vowels in the string" 
+	+ " is %d.", vowelCount(s));
+}
+
+		
 	///Summary
 	///Question R-1.1
 	///Summary
@@ -155,7 +201,7 @@ public class Chapter1 {
 	///Summary
 	/**
 	 * Question R-1.4:
-	 * Write a short Java method that takes an integer m and returns 
+	 * Write a short Java method that takes an integer n and returns 
 	 * the sum off all positive integers less than or equal to n.
 	 * 
 	 * My Solution:
@@ -171,5 +217,80 @@ public class Chapter1 {
 			sum+=i;
 		}
 		return sum;
+	}
+	
+	///Summary
+	///Question R-1.5
+	///Summary
+	/**
+	 * Question R-1.5:
+	 * Write a short Java method that takes an integer n and returns 
+	 * the sum off all the even positive integers less than or equal to n.
+	 * 
+	 * My Solution:
+	 * This is similar to question 5, with the only difference being 
+	 * the loop increments are +2 and the loops initial value.
+	 */
+	public static long sumOfEvens(int n)
+	{
+		if (n<1) return 0;
+		long sum=0;
+		for(int i=0;i<=n;i=i+2)
+		{
+			sum+=i;
+		}
+		return sum;
+	}
+	
+	///Summary
+	///Question R-1.6
+	///Summary
+	/**
+	 * Question R-1.6:
+	 * Write a short Java method that takes an integer n and returns 
+	 * the sum off all the squares of positive integers less than or
+	 * equal to n.
+	 * 
+	 * My Solution:
+	 * This is similar to question 5, but now we are simply adding
+	 * i*i rather than i.
+	 */
+	public static long sumOfSquares(int n)
+	{
+		if (n<1) return 0;
+		long sum=0;
+		for(int i=0;i<=n;i++)
+		{
+			sum+=i*i;
+		}
+		return sum;
+	}
+	
+	///Summary
+	///Question R-1.7
+	///Summary
+	/**
+	 * Question R-1.7:
+	 * Write a short Java method that counts the number of vowels 
+	 * in a given character string.
+	 * 
+	 * My Solution:
+	 * There are probably better ways to do this one, but I just
+	 * decided to make the string lower case and compare each letter
+	 * to each vowel.
+	 */
+	public static int vowelCount(String s)
+	{
+		int vowelCount=0;
+		s.toLowerCase();
+		for(char c: s.toCharArray())
+		{
+			if (c=="e".charAt(0) || c=="a".charAt(0) ||
+			c=="o".charAt(0) || c=="i".charAt(0) || c=="u".charAt(0))
+			{
+				vowelCount++;
+			}
+		}
+		return vowelCount;
 	}
 }
