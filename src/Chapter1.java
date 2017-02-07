@@ -1,5 +1,6 @@
 import java.util.Scanner;
-import java.lang.String;;
+import java.lang.String;
+import java.lang.StringBuilder;
 
 public class Chapter1 {
 
@@ -69,6 +70,7 @@ public class Chapter1 {
 //		else System.out.print("i is even. \n");
 //	
 //		
+		
 ////		UNIT TEST R-1.4
 //		System.out.print("Enter an integer n. \n");
 //		Scanner input = new Scanner(System.in); 
@@ -119,18 +121,40 @@ public class Chapter1 {
 //	" including %d is %d.",n,sumOfSquares(n));
 //}
 
-//	UNIT TEST R-1.7
-	System.out.print("Enter a string of characters. \n");
-	Scanner input = new Scanner(System.in); 
-	String s;
-	s = input.nextLine();
-	
-	input.close();
-	System.out.printf("The number of vowels in the string" 
-	+ " is %d.", vowelCount(s));
-}
+////	UNIT TEST R-1.7
+//	System.out.print("Enter a string of characters. \n");
+//	Scanner input = new Scanner(System.in); 
+//	String s;
+//	s = input.nextLine();
+//	
+//	input.close();
+//	System.out.printf("The number of vowels in the string" 
+//	+ " is %d.", vowelCount(s));
+//}
 
+////		UNIT TEST R-1.8
+//		System.out.print("Enter a string of characters. \n");
+//		Scanner input = new Scanner(System.in); 
+//		String s;
+//		s = input.nextLine();
+//		
+//		input.close();
+//		
+//		System.out.print(removePunctuation(s));
+//	}
+//	
 		
+//		UNIT TEST R-1.8
+		System.out.print("Enter a string of characters. \n");
+		Scanner input = new Scanner(System.in); 
+		String s;
+		s = input.nextLine();
+		
+		input.close();
+		
+		System.out.print(removePunctuation(s));
+	}
+	
 	///Summary
 	///Question R-1.1
 	///Summary
@@ -293,4 +317,44 @@ public class Chapter1 {
 		}
 		return vowelCount;
 	}
+	
+	
+	///Summary
+	///Question R-1.8
+	///Summary
+	/**
+	 * Question R-1.8:
+	 * Write a short Java method that uses a StringBuilder instance to
+	 * remove all the punctuation from a string s storing a sentence,
+	 * for example transforming the string "Let's try, Mike!" to "Lets
+	 * try Mike".
+	 * 
+	 * My Solution:
+	 * There may be better ways of doing this, but I just compared each 
+	 * character in the string to common punctuation, and if there was 
+	 * a match, I added it to the string builder; if not, it was ignored.
+	 */
+	public static String removePunctuation(String s)
+	{
+		StringBuilder sb = new StringBuilder();
+		for(char c: s.toCharArray())
+		{
+			if (c=="!".charAt(0) || c==";".charAt(0) ||
+			c==":".charAt(0) || c=="'".charAt(0) || c==".".charAt(0)
+			|| c==",".charAt(0) || c=="?".charAt(0) || c=="\"".charAt(0)
+			|| c=="(".charAt(0) || c==")".charAt(0) || c=="-".charAt(0))
+			{
+				continue;
+			}
+			else sb.insert(sb.length(), c);
+		}
+		return sb.toString();
+	}
+	
+	///Summary
+		///Question R-1.9
+		///Summary
+		/**
+		 * For question 9, go to the flower class.
+		 */
 }
