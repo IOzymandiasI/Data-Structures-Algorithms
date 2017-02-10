@@ -144,16 +144,41 @@ public class Chapter1 {
 //	}
 //	
 		
-//		UNIT TEST R-1.8
-		System.out.print("Enter a string of characters. \n");
-		Scanner input = new Scanner(System.in); 
-		String s;
-		s = input.nextLine();
+////		UNIT TEST R-1.8
+//		System.out.print("Enter a string of characters. \n");
+//		Scanner input = new Scanner(System.in); 
+//		String s;
+//		s = input.nextLine();
+//		
+//		input.close();
+//		
+//		System.out.print(removePunctuation(s));
+//	}
+	
+////		UNIT TEST R-1.11
+//		if (abcArithmetic(Integer.parseInt(args[0]),Integer.parseInt(args[1]),
+//		Integer.parseInt(args[2])))
+//		{
+//			System.out.print("An arithmetic relation exists between a,b and c");
+//		}
+//		else System.out.print("No arithmetic relation exists between a,b and c");
+//	}
 		
-		input.close();
+
+////		UNIT TEST R-1.11
+//		if (abcArithmetic(Integer.parseInt(args[0]),Integer.parseInt(args[1]),
+//		Integer.parseInt(args[2])))
+//		{
+//			System.out.print("An arithmetic relation exists between a,b and c");
+//		}
+//		else System.out.print("No arithmetic relation exists between a,b and c");
 		
-		System.out.print(removePunctuation(s));
-	}
+//		UNIT TEST R.1.16
+		
+		stringPermutations("","carbon ");
+		
+	}	
+	
 	
 	///Summary
 	///Question R-1.1
@@ -352,9 +377,103 @@ public class Chapter1 {
 	}
 	
 	///Summary
-		///Question R-1.9
-		///Summary
-		/**
-		 * For question 9, go to the flower class.
-		 */
+	///Question R-1.9
+	///Summary
+	/**
+	 * For question 9, go to the flower class.
+	 */
+
+
+	///Summary
+	///Question R-1.10
+	///Summary
+	/**
+	 * Question R-1.10:
+	 * Write a psuedocode description of a method for finding the smallest
+	 * and largest numbers in an array of integers and compare that to a 
+	 * Java method that would do the same thing.
+	 * 
+	 * My Solution:
+	 * 
+	 * largest <-- array[0]
+	 * for each int in array:	
+	 *     if int > largest
+	 *         largest <-- int    		  
+	 */
+	
+	public static boolean abcArithmetic(int a,int b,int c)
+	{
+		if (a+b==c) return true;
+		if (a==b-c) return true;
+		if (a*b==c) return true;
+		if (a==b*c) return true;
+		return false;
+	}
+	
+	///Summary
+	///Question R-1.12
+	///Summary
+	/**
+	 * Question R-1.12:
+	 * Write a short Java method that takes an array of int values and 
+	 * determines if there is a pair of distinct elements of the array whose
+	 * product is odd.
+	 * 
+	 * My Solution:
+	 * I think that this question may be a red herring. There is no point in
+	 * looping through the array to find a match. A product of two integers 
+	 * is odd if and both integers are odd. Therefore, all we need to do is
+	 * verify that more than one odd number exists in the array.
+	 */
+	
+	public static boolean oddProduct(int[] array)
+	{
+		int oddNumberCount=0;
+		for(int integer: array)
+		{
+			if (integer%2==1) oddNumberCount++;
+			if (oddNumberCount>1) return true; 
+		}
+		return false;
+	}
+	
+	public static int divideByTwo(int a)
+	{
+		String binaryString= Integer.toBinaryString(a);
+		return binaryString.length()-1;
+	}
+	
+	public static int[] dotProduct(int[] a, int[] b)
+	{
+		int length= a.length;
+		int[] c = new int[length];
+		for(int i=0; i<length;i++)
+		{
+			c[i]=a[i]*b[i];
+		}
+		return c;
+	}
+	
+	//plan: Recursive method which prints all permuations of substring
+	public static void stringPermutations(String mainString,String subString)
+	{
+		int length=subString.length(); 
+		if (length==1)
+		{	
+			System.out.print(mainString.toString() + subString.toString() + "\n");
+		}
+		else 
+		{	
+			for(int k=0; k<length-1; k++)
+			{
+				String newMainString= mainString + subString.charAt(k);
+				String newSubString=subString.substring(0, k) + subString.substring(k+1);
+				stringPermutations(newMainString,newSubString);
+			}
+//			String newMainString= mainString + subString.charAt(length-1);
+//			String newSubString=subString.substring(0, length-1S);
+//			stringPermutations(mainString,subString);
+		}
+		
+	}
 }
