@@ -14,8 +14,14 @@ public class FibonacciProgression extends Progression
 	
 	protected void advance()
 	{
-		long temp = prev;
-		prev = current;
-		current += temp;
+//		long temp = prev;
+//		prev = current;
+//		current += temp;
+		prev = current + prev;
+		current = current - prev;
+		prev = current + prev;
+		current = current *-1;
+		current = current + prev;
 	}
+	
 }
