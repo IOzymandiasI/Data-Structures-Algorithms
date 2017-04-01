@@ -1,6 +1,7 @@
 package chapter3;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
-
+import java.util.Date;
 
 //This class is a solution to the problem presented in R-3.1.
 public class ArrayMethods {
@@ -19,6 +20,23 @@ public class ArrayMethods {
 
 //		randomDeleteAll(intArray);
 //		randomDeleteAll(charArray);
+		int length = 2;
+		Integer intArray[] = new Integer[length];
+		Random ran = new Random();
+		for (int i = 0; i < length; i++)
+		{
+			intArray[i] = ran.nextInt(100);
+			System.out.print(intArray[i].toString() + ", ");
+		}
+				
+		System.out.println();
+		shuffle(intArray);
+		
+		for (int i = 0; i < length; i++)
+		{
+			System.out.print(intArray[i].toString() + ", ");
+		}
+		
 	}
 	
 	private static <A> A[] randomDelete(A[] array, int max)
@@ -57,4 +75,39 @@ public class ArrayMethods {
 		}
 	}
 	
+	private static <A> A[] backup(A[] original)
+	{
+		int length = original.length;
+		A[] backup = (A[]) new Object[length];
+		for (int i = 0; i < length; i++)
+		{
+			backup[i]=original[i];
+		}
+		return backup;
+	}
+	
+	public static <A> void shuffle(A[] array)
+	{
+		int length = array.length;
+		int a;
+		
+		A intermediate = (A) new Object();
+		Random num = new Random(length);
+		
+//		for (int i=0; i< 100; i++)
+//		{
+//			a = (num.nextInt(length));
+//			System.out.println(a);
+//		}
+	
+		for (int i=0; i< length; i++)
+		{
+			intermediate = array[i];
+			a = (num.nextInt(length));
+//			System.out.println(a);
+			array[i] = array[a];
+			array[a] = intermediate;
+		}
+		
+	}
 }

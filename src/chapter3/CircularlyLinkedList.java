@@ -17,11 +17,9 @@ public class CircularlyLinkedList<E>
 	}
 	
 	private Node<E> tail = null;
-	private int size = 0;
 	
 	public CircularlyLinkedList(){}
-	public int size() {return size;}
-	public boolean isEmpty(){return size == 0;}
+	public boolean isEmpty(){return size() == 0;}
 	public E first()
 	{
 		if (isEmpty()) return null;
@@ -41,7 +39,7 @@ public class CircularlyLinkedList<E>
 	
 	public void addFirst(E e)
 	{
-		if(size==0)
+		if(size()==0)
 		{
 			tail = new Node<>(e,null);
 			tail.setNext(tail);
@@ -50,7 +48,6 @@ public class CircularlyLinkedList<E>
 		{
 			tail.setNext(new Node<>(e,tail.getNext()));
 		}
-		size++;
 	}
 	
 	public void addLast(E e)
@@ -65,13 +62,58 @@ public class CircularlyLinkedList<E>
 		Node<E> head = tail.getNext();
 		if (head == tail) tail = null;
 		else tail.setNext(head.getNext());
-		size--;
+		//size--;
 		return head.getElement();
+	}
+	
+	public int size()
+	{
+		if (tail==null) return 0;
+		int size = 1;
+		final Node<E> originalTail = tail;
+		rotate();
+		while (tail!=originalTail)
+		{
+			size++;
+			rotate();
+		}
+		return size;
+	}
+	
+	public boolean equals(CircularlyLinkedList cll)
+	{
+		System.out.println(this.size());
+		System.out.println(cll.size());
+		if (this.size() != cll.size()) return false;
+		for (int i = 0; i < size(); i++)
+		{
+			if (this.first() != cll.first())
+				return false;
+			else
+				rotate();
+				cll.rotate();
+		}
+		return true;
 	}
 	
 	public static void main(String[] args) 
 	{
+		CircularlyLinkedList<Integer> cll = new CircularlyLinkedList<Integer>();
+		for (int i = 1; i < 100; i++)
+		{
+			cll.addFirst(i);
+		}
 		
+		CircularlyLinkedList<Integer> circ = new CircularlyLinkedList<Integer>();
+		for (int i = 1; i < 100; i++)
+		{
+			circ.addFirst(i);
+		}
+		
+		if (cll.equals(circ)) System.out.println("True");
+		else System.out.println("False");
+		
+//	System.out.println(cll.size());
 	}
 
 }
